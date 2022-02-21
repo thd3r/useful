@@ -19,7 +19,7 @@ else:
 threadLock = threading.Lock()
 threads = []
 
-author = '@__BytexThunder__'
+author = 'Github: @BytexThunder'
 banner = f'''{Fore.LIGHTBLUE_EX}
  _   _               ____                      
 | | | |___  ___ _ __|  _ \ ___  ___ ___  _ __  
@@ -28,7 +28,7 @@ banner = f'''{Fore.LIGHTBLUE_EX}
  \___/|___/\___|_|  |_| \_\___|\___\___/|_| |_|
 
                                                
-                    {Fore.WHITE}             {author}
+                    {Fore.WHITE}        {author}
 '''
 
 def Start():
@@ -102,8 +102,8 @@ class Instagram(threading.Thread):
             'Username': output['graphql']['user']['username'],
             'Biography': str(output['graphql']['user']['biography'].replace("\n", " | ")),
             'Followers': output['graphql']['user']['edge_followed_by']['count'],
-            'Followings': output['graphql']['user']['edge_follow']['count'],
-            'Total Media': output['graphql']['user']['edge_owner_to_timeline_media']['count'],
+            'Following': output['graphql']['user']['edge_follow']['count'],
+            'Media': output['graphql']['user']['edge_owner_to_timeline_media']['count'],
             'Highlight Story': output['graphql']['user']['highlight_reel_count'],
             'Verified': output['graphql']['user']['is_verified'],
             'Private Account': output['graphql']['user']['is_private'],
@@ -133,8 +133,8 @@ class Instagram(threading.Thread):
         print("Username\t\t: " + str(output['graphql']['user']['username']))
         print("Biography\t\t: " + str(output['graphql']['user']['biography']))
         print("Followers\t\t: " + str(output['graphql']['user']['edge_followed_by']['count']))
-        print("Followings\t\t: " + str(output['graphql']['user']['edge_follow']['count']))
-        print("Total Media\t\t: " + str(output['graphql']['user']['edge_owner_to_timeline_media']['count']))
+        print("Following\t\t: " + str(output['graphql']['user']['edge_follow']['count']))
+        print("Media\t\t: " + str(output['graphql']['user']['edge_owner_to_timeline_media']['count']))
         print("Highlight Story\t\t: " + str(output['graphql']['user']['highlight_reel_count']))
         print("Verified\t\t: " + str(output['graphql']['user']['is_verified']))
         print("Private Account\t\t: " + str(output['graphql']['user']['is_private']))
