@@ -134,7 +134,7 @@ class Instagram(threading.Thread):
         print("Biography\t\t: " + str(output['graphql']['user']['biography']))
         print("Followers\t\t: " + str(output['graphql']['user']['edge_followed_by']['count']))
         print("Following\t\t: " + str(output['graphql']['user']['edge_follow']['count']))
-        print("Media\t\t: " + str(output['graphql']['user']['edge_owner_to_timeline_media']['count']))
+        print("Media\t\t\t: " + str(output['graphql']['user']['edge_owner_to_timeline_media']['count']))
         print("Highlight Story\t\t: " + str(output['graphql']['user']['highlight_reel_count']))
         print("Verified\t\t: " + str(output['graphql']['user']['is_verified']))
         print("Private Account\t\t: " + str(output['graphql']['user']['is_private']))
