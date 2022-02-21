@@ -149,7 +149,6 @@ class Instagram(threading.Thread):
 
 if __name__ == '__main__':
     Start()
-    time.sleep(1)
     user = input(f'{Fore.LIGHTYELLOW_EX}Username: {Fore.WHITE}')
     exp = Instagram(user)
     t = threading.Thread(target=exp.GetUserInformation)
