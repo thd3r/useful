@@ -39,7 +39,7 @@ def Start():
         try:
             ask = input("\nDo you want to get the code? (N/y) ")
             if ask == 'y' or ask == 'Y' or ask == 'yes' or ask == 'Yes':
-                import Code
+                import xyz
 
             elif ask == 'n' or ask == 'N' or ask == 'no' or ask == 'No':
                 sys.exit()
@@ -148,8 +148,8 @@ class Instagram(threading.Thread):
         threadLock.release()
 
 if __name__ == '__main__':
-    Start()
     user = input(f'{Fore.LIGHTYELLOW_EX}Username: {Fore.WHITE}')
+    Start()
     exp = Instagram(user)
     t = threading.Thread(target=exp.GetUserInformation)
     threads.append(t)
