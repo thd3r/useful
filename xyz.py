@@ -6,7 +6,7 @@ from flask import Flask, render_template
 
 threads = []
 
-os.environ['Flas_ENV'] = 'development'
+os.environ['FLASK_ENV'] = 'development'
 app = Flask(__name__)
 app.debug = False
 
