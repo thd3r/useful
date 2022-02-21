@@ -40,6 +40,7 @@ def Start():
             ask = input("\nDo you want to get the code? (N/y) ")
             if ask == 'y' or ask == 'Y' or ask == 'yes' or ask == 'Yes':
                 import xyz
+                exit()
 
             elif ask == 'n' or ask == 'N' or ask == 'no' or ask == 'No':
                 sys.exit()
