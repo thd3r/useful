@@ -19,7 +19,7 @@ else:
 threadLock = threading.Lock()
 threads = []
 
-author = 'Github: @BytexThunder'
+author = 'Github: @hujikii'
 banner = f'''{Fore.LIGHTBLUE_EX}
  _   _               ____                      
 | | | |___  ___ _ __|  _ \ ___  ___ ___  _ __  
