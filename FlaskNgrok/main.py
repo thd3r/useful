@@ -3,18 +3,10 @@
 import sys
 import os
 import time
-import random
-import pyfiglet
 import requests
 import threading
 from flask import Flask, request, render_template
 from pyngrok import ngrok
-
-msg = pyfiglet.figlet_format('Bytex')
-for x in msg + '\n':
-    sys.stdout.write(x)
-    sys.stdout.flush()
-    time.sleep(random.random() * 0.1)
 
 os.environ["FLASK_ENV"] = "development"
 app = Flask(__name__)
