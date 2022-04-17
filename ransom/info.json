@@ -1,3 +1,4 @@
 {
-  'author': '0xthd3r'
+  "author": "0xthd3r",
+  "target_os": "Windows"
 }
