@@ -1,0 +1,5 @@
+pyngrok==5.1.0
+cryptography==36.0.2
+flask==2.1.1
+pycryptodome==3.14.1
+requests==2.27.1
