@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ransomware Decrypted</title>
+</head>
+<body>
+  
+  <form method="POST" action="">
+    <input type="text" placeholder="Code" name="code" value="{{ request.form.code }}">
+    <br>
+    <input type="password" placeholder="Secret Key" name="key" value="{{ request.form.code }}">
+    <br><br>
+    <input type="submit" value="Decrypt">
+
+  </form>
+  <br>
+  {% if error %}
+  <strong>Error:</strong> {{ error }}
+  {% endif %}
+
+</body>
+</html>
+
