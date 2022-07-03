@@ -1,0 +1,6 @@
+base_url:
+  threatcrowd: https://www.threatcrowd.org/searchApi/v2/domain/report/?domain={domain}
+  crtsh: https://crt.sh/?q=%25.{domain}&output=json
+  urlscan: https://urlscan.io/api/v1/search/?q=domain:{domain}
+  virustotal: https://www.virustotal.com/vtapi/v2/domain/report?domain={domain}&apikey={apikey}
+  subdomains_whoisxmlapi: https://subdomains.whoisxmlapi.com/api/v1?apiKey={apikey}&domainName={domain}&outputFormat=json
