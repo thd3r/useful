@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{{ session.username }}</title>
+    </head>
+    <body>
+        <div>
+            <iframe src="/audio/One-Direction.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
+        </div>
+        <div>
+            <p>Hi {{ session.username }}</p>
+        </div>
+        <p><a href="{{ url_for('logout') }}">Logout</a></p>
+    </body>
+</html>
