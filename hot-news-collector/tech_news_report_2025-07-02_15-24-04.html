@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech News Report - July 2, 2025</title>
+    <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #2a2a2a;
+            --bg-accent: #333333;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3b3;
+            --text-muted: #808080;
+            --border-color: #404040;
+            --accent-ai: #ff6b6b;
+            --accent-tech: #4ecdc4;
+            --accent-digital: #45b7d1;
+            --accent-hacking: #f9ca24;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-card: linear-gradient(145deg, #2a2a2a 0%, #1f1f1f 100%);
+            --shadow-light: 0 4px 20px rgba(255, 255, 255, 0.05);
+            --shadow-heavy: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-card: #ffffff;
+            --bg-accent: #e9ecef;
+            --text-primary: #212529;
+            --text-secondary: #495057;
+            --text-muted: #6c757d;
+            --border-color: #dee2e6;
+            --accent-ai: #dc3545;
+            --accent-tech: #20c997;
+            --accent-digital: #0d6efd;
+            --accent-hacking: #ffc107;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-card: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+            --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-heavy: 0 10px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6; 
+            color: var(--text-primary); 
+            background: var(--bg-primary);
+            min-height: 100vh;
+            scroll-behavior: smooth;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            padding: 20px;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            border-radius: 50px;
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-light);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-heavy);
+            border-color: var(--accent-tech);
+        }
+
+        .theme-icon {
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .theme-toggle:hover .theme-icon {
+            transform: rotate(180deg);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 60px 20px;
+            background: var(--gradient-primary);
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 16px;
+            background: linear-gradient(45deg, #ffffff, #e0e0e0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .header-date {
+            margin-top: 12px;
+            font-size: 1rem;
+            opacity: 0.8;
+            font-weight: 500;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .stat-card {
+            background: var(--gradient-card);
+            padding: 32px 24px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-light);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-heavy);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        [data-theme="light"] .stat-card:hover {
+            border-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            display: block;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .category-section {
+            margin-bottom: 60px;
+            background: var(--bg-secondary);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-light);
+        }
+
+        .category-header {
+            padding: 32px;
+            background: var(--gradient-card);
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        .category-header:hover {
+            background: var(--bg-card);
+        }
+
+        .category-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .category-ai::before { background: var(--accent-ai); }
+        .category-tech::before { background: var(--accent-tech); }
+        .category-digital::before { background: var(--accent-digital); }
+        .category-hacking::before { background: var(--accent-hacking); }
+        
+        .category-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            width: 100%;
+        }
+
+        .category-toggle {
+            margin-left: auto;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+            color: var(--text-secondary);
+        }
+
+        .category-section.collapsed .category-toggle {
+            transform: rotate(-90deg);
+        }
+
+        .category-icon {
+            font-size: 2rem;
+            opacity: 0.9;
+        }
+
+        .category-count {
+            background: var(--bg-accent);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .articles-grid {
+            padding: 32px;
+            display: grid;
+            gap: 24px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .category-section.collapsed .articles-grid {
+            max-height: 0;
+            padding: 0 32px;
+            opacity: 0;
+        }
+
+        .category-section:not(.collapsed) .articles-grid {
+            max-height: none;
+            opacity: 1;
+        }
+
+        .article-card {
+            background: var(--gradient-card);
+            padding: 28px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .article-ai::before { background: var(--accent-ai); }
+        .article-tech::before { background: var(--accent-tech); }
+        .article-digital::before { background: var(--accent-digital); }
+        .article-hacking::before { background: var(--accent-hacking); }
+
+        .article-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-heavy);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        [data-theme="light"] .article-card:hover {
+            border-color: rgba(0, 0, 0, 0.15);
+        }
+
+        .article-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.4;
+        }
+
+        .article-title a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .article-title a:hover {
+            color: var(--accent-digital);
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .article-source {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .article-time {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .hot-score {
+            background: linear-gradient(45deg, var(--accent-ai), #ee5a6f);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+            white-space: nowrap;
+        }
+
+        .article-description {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .keyword-tag {
+            background: var(--bg-accent);
+            color: var(--text-secondary);
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+            transition: all 0.2s ease;
+        }
+
+        .keyword-tag:hover {
+            background: var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .footer {
+            text-align: center;
+            color: var(--text-muted);
+            margin-top: 80px;
+            padding: 40px 20px;
+            background: var(--bg-secondary);
+            border-radius: 24px;
+            border: 1px solid var(--border-color);
+        }
+
+        .footer-logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .footer-time {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+		
+		.footer-copyright {
+			font-size: 0.9rem;
+			opacity: 0.8;
+		}
+
+        /* Loading animation */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .loading { animation: pulse 2s infinite; }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container { padding: 16px; }
+            .header { padding: 40px 20px; margin-bottom: 40px; }
+            .stats { grid-template-columns: 1fr; gap: 16px; }
+            .stat-card { padding: 24px 20px; }
+            .category-header { padding: 24px 20px; }
+            .articles-grid { padding: 20px; gap: 20px; }
+            .article-card { padding: 20px; }
+            .category-title { font-size: 1.5rem; flex-direction: column; align-items: flex-start; gap: 12px; }
+            .category-count { margin-left: 0; }
+            .category-toggle { display: none; }
+            .article-meta { flex-direction: column; align-items: flex-start; }
+            .theme-toggle { 
+                position: fixed; 
+                top: 10px; 
+                right: 10px; 
+                padding: 10px 12px; 
+                font-size: 12px; 
+            }
+        }
+
+        @media (max-width: 480px) {
+            .article-title { font-size: 1.2rem; }
+            .category-title { font-size: 1.3rem; }
+            .stat-number { font-size: 2.5rem; }
+            .theme-toggle { 
+                padding: 8px 10px; 
+                font-size: 11px; 
+            }
+        }
+
+        /* Smooth scrolling for better UX */
+        html { scroll-behavior: smooth; }
+
+        /* Focus styles for accessibility */
+        a:focus, button:focus, .theme-toggle:focus {
+            outline: 2px solid var(--accent-tech);
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+
+        /* Print styles */
+        @media print {
+            .theme-toggle { display: none !important; }
+            .header { background: none !important; color: black !important; }
+            .stat-card, .category-section, .article-card { 
+                break-inside: avoid; 
+                box-shadow: none !important;
+                border: 1px solid #ccc !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+        <span class="theme-icon">🌙</span>
+        <span class="theme-text">Dark</span>
+    </button>
+
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1>🚀 Tech News Report</h1>
+                <p class="header-subtitle">Latest Technology News & Insights</p>
+                <div class="header-date">Wednesday, July 2, 2025</div>
+            </div>
+        </header>
+        <section class="stats">
+            <div class="stat-card">
+                <span class="stat-number">20</span>
+                <div class="stat-label">Total Articles</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">3</span>
+                <div class="stat-label">Categories</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">294</span>
+                <div class="stat-label">Avg. Hot Score</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">39.4</span>
+                <div class="stat-label">Hours Ago</div>
+            </div>
+        </section>
+
+        <main>
+            <section class="category-section" id="category-digital">
+                <div class="category-header category-digital" onclick="toggleCategory('digital')">
+                    <div class="category-title">
+                        <span class="category-icon">💰</span>
+                        <span>Digital & Fintech</span>
+                        <div class="category-count">10 articles</div>
+                        <span class="category-toggle">▼</span>
+                    </div>
+                </div>
+                <div class="articles-grid">
+                    <article class="article-card article-digital">
+                        <h2 class="article-title">
+                            <a href="https://biztoc.com/x/7e5c7ccef3563a53" target="_blank">Bitcoin, Ethereum, Solana, XRP Or Dogecoin: If You Invested $1,000 In These Cryptos When 2025 Began, Here is How Much You&#39;d Have Today Now That Half The Year Is Over</a>
+                        </h2>
+                        <div class="article-meta">
+                            <div>
+                                <span class="article-source">Biztoc.com</span>
+                                <span class="article-time"> • 1 day ago</span>
+                            </div>
+                            <div class="hot-score">🔥 429</div>
+                        </div>
+                        <p class="article-description">
+                            Bitcoin, the world&#39;s most valuable cryptocurrency, drove the moves of the broader cryptocurrency market in the first half of 2025, encountering historic highs and sharp corrections. While some investments were successful, others left a large hole in investors…
+                        </p>
+                        <div class="keywords">
+                            <span class="keyword-tag">cryptocurrency</span><span class="keyword-tag">bitcoin</span><span class="keyword-tag">ethereum</span><span class="keyword-tag">solana</span><span class="keyword-tag">cryptocurrency</span><span class="keyword-tag">bitcoin</span><span class="keyword-tag">ethereum</span><span class="keyword-tag">crypto</span>
+                        </div>
+                    </article>
+                    <article class="article-card article-digital">
+                        <h2 class="article-title">
+                            <a href="https://economictimes.indiatimes.com/markets/cryptocurrency/crypto-news/bitcoin-trades-near-107k-ahead-of-u-s-tariff-deadline-hyperliquid-avalanche-fall-up-to-5/articleshow/122177448.cms" target="_blank">Bitcoin trades near $107k ahead of U.S. tariff deadline; Hyperliquid, Avalanche fall up to 5%</a>
+                        </h2>
+                        <div class="article-meta">
+                            <div>
+                                <span class="article-source">The Times of India</span>
+                                <span class="article-time"> • 1 day ago</span>
+                            </div>
+                            <div class="hot-score">🔥 351</div>
+                        </div>
+                        <p class="article-description">
+                            The cryptocurrency market saw a dip, with Bitcoin near $107,000. Investors are watching the U.S. tariff deadline. Ethereum also experienced a fall. Some altcoins gained, while others dropped. Experts suggest potential bullish pressure despite caution. ETF inf…
+                        </p>
+                        <div class="keywords">
+                            <span class="keyword-tag">ai</span><span class="keyword-tag">ai</span><span class="keyword-tag">cryptocurrency</span><span class="keyword-tag">bitcoin</span><span class="keyword-tag">ethereum</span><span class="keyword-tag">avalanche</span><span class="keyword-tag">cryptocurrency</span><span class="keyword-tag">bitcoin</span><span class="keyword-tag">ethereum</span><span class="keyword-tag">crypto</span>
+                        </div>
+                    </article>
+                    <article class="article-card article-digital">
+                        <h2 class="article-title">
+                            <a href="https://www.globenewswire.com/news-release/2025/06/30/3107774/0/en/WinnerMining-has-launched-a-free-mining-light-luxury-version-APP-which-supports-anyone-to-participate-using-popular-currencies-such-as-BTC-XRP-SOL-DOGE-USDC-etc.html" target="_blank">WinnerMining has launched a free mining light luxury version APP, which supports anyone to participate using popular currencies such as BTC, XRP, SOL, DOGE, USDC, etc.</a>
+                        </h2>
+                        <div class="article-meta">
+                            <div>
+                                <span class="article-source">GlobeNewswire</span>
+                                <span class="article-time"> • 1 day ago</span>
+                            </div>
+                            <div class="hot-score">🔥 286</div>
+                        </div>
+                        <p class="article-description">
+                            Los Angeles, California, June 30, 2025 (GLOBE NEWSWIRE) -- As digital financial markets continue to grow and reshape everyday life, people around the world are able to make their own investment choices - including whether to participate in cryptocurrency clou…
+                        </p>
+                        <div class="keywords">
+                            <span class="keyword-tag">cryptocurrency</span><span class="keyword-tag">cryptocurrency</span><span class="keyword-tag">crypto</span><span class="keyword-tag">mining</span>
+                        </div>
+                    </article>
+                    <article class="article-card article-digital">
+                        <h2 class="article-title">
+                            <a href="https://cointelegraph.com/news/fatf-stablecoin-warning-not-anti-crypto-chainalysis-asset-reality" target="_blank">FATF warning on stablecoin crimes is not anti-crypto, intel firms say</a>
+                        </h2>
+                        <div class="article-meta">
+                            <div>
+                                <span class="article-source">Cointelegraph</span>
+                                <span class="article-time"> • 1 day ago</span>
+                            </div>
+                            <div class="hot-score">🔥 283</div>
+                        </div>
+                        <p class="article-description">
+                            Onchain sleuth ZachXBT flagged millions in Circle’s USDC allegedly tied to North Korean IT infrastructure soon after the FATF issued a warning on stablecoin use in illicit activities.
+                        </p>
+                        <div class="keywords">
+                            <span class="keyword-tag">ai</span><span class="keyword-tag">ai</span><span class="keyword-tag">stablecoin</span><span class="keyword-tag">intel</span><span class="keyword-tag">crypto</span><span class="keyword-tag">stablecoin</span>
+                        </div>
+                    </article>
+                    <article class="article-card article-digital">
+                        <h2 class="article-title">
+                            <a href="https://biztoc.com/x/610c2bfd5295b2d6" target="_blank">Bitcoin, Ethereum, Dogecoin Slide Even As Q2 Turns Profitable For Crypto: Analyst Warns About Decline In BTC If The Apex Coin Doesn&#39;t Close Above This Level</a>
+                        </h2>
+                        <div class="article-meta">
+                            <div>
+                                <span class="article-source">Biztoc.com</span>
+                                <span class="article-time"> • 1 day ago</span>
+                            </div>
+                            <div class="hot-score">🔥 278</div>
+                        </div>
+                        <p class="article-description">
+                            Leading cryptocurrencies fell on Monday amid speculation that the Trump administration may have a “shadow Fed&#34; before the term of Federal Reserve Chair Jerome Powell ends.
+Cryptocurrency
+Gains +/-
+Price (Recorded at 10:30 p.m. ET)
+Bitcoin (CRYPTO: BTC)
+-1.15%…
+                        </p>
+                        <div class="keywords">
+                            <span class="keyword-tag">ai</span><span class="keyword-tag">ai</span><span class="keyword-tag">cryptocurrency</span><span class="keyword-tag">bitcoin</span><span class="keyword-tag">ethereum</span><span class="keyword-tag">cryptocurrency</span><span class="keyword-tag">bitcoin</span><span class="keyword-tag">ethereum</span><span class="keyword-tag">crypto</span>
+                        </div>
+                    </article>
+                    <article class="article-card article-digital">
+                        <h2 class="article-title">
+                            <a href="https://biztoc.com/x/c9f54f83351aa069" target="_blank">Can BSC’s Maxwell upgrade challenge Ethereum’s DeFi dominance?</a>
+                        </h2>
+                        <div class="article-meta">
+                            <div>
+                                <span class="article-source">Biztoc.com</span>
+                                <span class="article-time"> • 1 day ago</span>
+                            </div>
+                            <div class="hot-score">🔥 276</div>
+                        </div>
+                        <p class="article-description">
+                            BSC now leads in raw block output, clocking 115,200 blocks/day, 8x more than Ethereum’s projected volume
+- Does this performance gap reflect deeper on-chain traction too?
+As blockchain use cases rapidly expand into mainstream finance, Layer-1 chains are tight…
+                        </p>
+                        <div class="keywords">
+                            <span class="keyword-tag">ai</span><span class="keyword-tag">ai</span><span class="keyword-tag">blockchain</span><span class="keyword-tag">ethereum</span><span class="keyword-tag">defi</span><span class="keyword-tag">api</span><span class="keyword-tag">ethereum</span><span class="keyword-tag">blockchain</span><span class="keyword-tag">defi</span>
+                        </div>
+                    </article>
+                    <article class="article-card article-digital">
+                        <h2 class="article-title">
+                            <a href="https://biztoc.com/x/4d872bc7d47cd3c9" target="_blank">Bitcoin ETP With DeFi Yield Goes Live in Europe</a>
+                        </h2>
+                        <div class="article-meta">
+                            <div>
+                                <span class="article-source">Biztoc.com</span>
+                                <span class="article-time"> • 1 day ago</span>
+                            </div>
+                            <div class="hot-score">🔥 270</div>
+                        </div>
+                        <p class="article-description">
+                            exchange-traded product (ETP) that generates yield from decentralized finance (DeFi) markets has debuted on Tuesday, in what issuer Fineqia calls a first of its kind.
+The Fineqia Bitcoin Yield ETP (YBTC), listed on the Vienna Stock Exchange, targets a 6% annu…
+                        </p>
+                        <div class="keywords">
+                            <span class="keyword-tag">bitcoin</span><span class="keyword-tag">defi</span><span class="keyword-tag">bitcoin</span><span class="keyword-tag">defi</span><span class="keyword-tag">exchange</span>
+                        </div>
+                    </article>
+                    <article class="article-card article-digital">
+                        <h2 class="article-title">
+                            <a href="https://ithelp.ithome.com.tw/questions/10219092?sc=rss.qu" target="_blank">What is Coinbase business hours?</a>
+                        </h2>
+                        <div class="article-meta">
+                            <div>
+                                <span class="article-source">Ithome.com.tw</span>
+                                <span class="article-time"> • 1 day ago</span>
+                            </div>
+                            <div class="hot-score">🔥 248</div>
+                        </div>
+                        <p class="article-description">
+                            Coinbase is one of the most popular cryptocurrency exchanges,((+1★(833)★ 783★2913) offering trading,...
+                        </p>
+                        <div class="keywords">
+                            <span class="keyword-tag">cryptocurrency</span><span class="keyword-tag">coinbase</span><span class="keyword-tag">cryptocurrency</span><span class="keyword-tag">crypto</span><span class="keyword-tag">trading</span><span class="keyword-tag">exchange</span>
+                        </div>
+                    </article>
+                    <article class="article-card article-digital">
+                        <h2 class="article-title">
+                            <a href="https://zycrypto.com/sui-crypto-technology-vs-bitcoin-solaris-why-traders-are-flocking-to-the-true-bitcoin-successor/" target="_blank">Sui Crypto Technology vs Bitcoin Solaris: Why Traders Are Flocking to the ‘True Bitcoin Successor’</a>
+                        </h2>
+                        <div class="article-meta">
+                            <div>
+                                <span class="article-source">ZyCrypto</span>
+                                <span class="article-time"> • 1 day ago</span>
+                            </div>
+                            <div class="hot-score">🔥 237</div>
+                        </div>
+                        <p class="article-description">
+                            In crypto, timing is everything. And right now, while countless projects compete for attention, one name keeps rising faster than the rest: Bitcoin Solaris. As prices across the board heat up and blockchain innovation accelerates, traders are hunting for pote…
+                        </p>
+                        <div class="keywords">
+                            <span class="keyword-tag">ai</span><span class="keyword-tag">ai</span><span class="keyword-tag">blockchain</span><span class="keyword-tag">bitcoin</span><span class="keyword-tag">bitcoin</span><span class="keyword-tag">blockchain</span><span class="keyword-tag">crypto</span>
+                        </div>
+                    </article>
+                    <article class="article-card article-digital">
+                        <h2 class="article-title">
+                            <a href="https://biztoc.com/x/31bc4e7daa1f2d76" target="_blank">Germany&#39;s Public Savings Bank Network Sparkassen to Offer Bitcoin Trading to Clients: Report</a>
+                        </h2>
+                        <div class="article-meta">
+                            <div>
+                                <span class="article-source">Biztoc.com</span>
+                                <span class="article-time"> • 1 day ago</span>
+                            </div>
+                            <div class="hot-score">🔥 237</div>
+                        </div>
+                        <p class="article-description">
+                            Sparkassen, a group of savings banks operating across Germany since the first established in Hamburg in 1778, has decided to introduce cryptocurrency trading services for their customers, according to a report by Bloomberg.
+The group will enable private clien…
+                        </p>
+                        <div class="keywords">
+                            <span class="keyword-tag">cryptocurrency</span><span class="keyword-tag">bitcoin</span><span class="keyword-tag">cryptocurrency</span><span class="keyword-tag">bitcoin</span><span class="keyword-tag">crypto</span><span class="keyword-tag">trading</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+            <section class="category-section" id="category-hacking">
+                <div class="category-header category-hacking" onclick="toggleCategory('hacking')">
+                    <div class="category-title">
+                        <span class="category-icon">🔒</span>
+                        <span>Cybersecurity</span>
+                        <div class="category-count">3 articles</div>
+                        <span class="category-toggle">▼</span>
+                    </div>
+                </div>
+                <div class="articles-grid">
+                    <article class="article-card article-hacking">
+                        <h2 class="article-title">
+                            <a href="https://www.pcgamer.com/hardware/massive-ahold-delhaize-data-breach-sees-2-2-million-peoples-data-exposed-in-ransomware-attacks-against-major-u-s-food-retailer/" target="_blank">Massive Ahold Delhaize data breach sees 2.2 million people&#39;s data exposed in ransomware attacks against major U.S. food retailer</a>
+                        </h2>
+                        <div class="article-meta">
+                            <div>
+                                <span class="article-source">PC Gamer</span>
+                                <span class="article-time"> • 1 day ago</span>
+                            </div>
+                            <div class="hot-score">🔥 391</div>
+                        </div>
+                        <p class="article-description">
+                            The attack took place in November last year, so if you haven&#39;t changed your password since then, please do.
+                        </p>
+                        <div class="keywords">
+                            <span class="keyword-tag">ai</span><span class="keyword-tag">ai</span><span class="keyword-tag">data breach</span><span class="keyword-tag">ransomware</span><span class="keyword-tag">data breach</span><span class="keyword-tag">ransomware</span><span class="keyword-tag">attack</span>
+                        </div>
+                    </article>
+                    <article class="article-card article-hacking">
+                        <h2 class="article-title">
+                            <a href="https://securityaffairs.com/179484/cyber-warfare-2/cisa-and-u-s-agencies-warn-of-ongoing-iranian-cyber-threats-to-critical-infrastructure.html" target="_blank">CISA and U.S. Agencies warn of ongoing Iranian cyber threats to critical infrastructure</a>
+                        </h2>
+                        <div class="article-meta">
+                            <div>
+                                <span class="article-source">Securityaffairs.com</span>
+                                <span class="article-time"> • 1 day ago</span>
+                            </div>
+                            <div class="hot-score">🔥 255</div>
+                        </div>
+                        <p class="article-description">
+                            U.S. warns of rising Iranian cyber threats exploiting outdated software and weak passwords, with attacks likely to escalate due to recent events. U.S. cybersecurity and intelligence agencies warn of rising cyber threats from Iranian state-linked hackers, expe…
+                        </p>
+                        <div class="keywords">
+                            <span class="keyword-tag">cybersecurity</span><span class="keyword-tag">intel</span><span class="keyword-tag">software</span><span class="keyword-tag">cybersecurity</span><span class="keyword-tag">cybersecurity</span><span class="keyword-tag">exploit</span><span class="keyword-tag">threat</span><span class="keyword-tag">attack</span><span class="keyword-tag">security</span>
+                        </div>
+                    </article>
+                    <article class="article-card article-hacking">
+                        <h2 class="article-title">
+                            <a href="https://www.digitimes.com/news/a20250630PD203/cybersecurity-ceo-software-security.html" target="_blank">The new era of unmanned cybersecurity: CyCraft warns of AI-driven cyber threats, calls for automated defenses</a>
+                        </h2>
+                        <div class="article-meta">
+                            <div>
+                                <span class="article-source">Digitimes</span>
+                                <span class="article-time"> • 1 day ago</span>
+                            </div>
+                            <div class="hot-score">🔥 237</div>
+                        </div>
+                        <p class="article-description">
+                            Benson Wu, CEO and co-founder of Taiwan-based CyCraft Technology, has cautioned that generative AI tools pose a significant threat by enabling malicious actors to launch more sophisticated and intensive cyberattacks. Wu described generative AI as a &#34;Pandora&#39;s…
+                        </p>
+                        <div class="keywords">
+                            <span class="keyword-tag">ai</span><span class="keyword-tag">generative ai</span><span class="keyword-tag">ai</span><span class="keyword-tag">cybersecurity</span><span class="keyword-tag">cybersecurity</span><span class="keyword-tag">cybersecurity</span><span class="keyword-tag">threat</span><span class="keyword-tag">attack</span><span class="keyword-tag">security</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+            <section class="category-section" id="category-ai">
+                <div class="category-header category-ai" onclick="toggleCategory('ai')">
+                    <div class="category-title">
+                        <span class="category-icon">🤖</span>
+                        <span>Artificial Intelligence</span>
+                        <div class="category-count">7 articles</div>
+                        <span class="category-toggle">▼</span>
+                    </div>
+                </div>
+                <div class="articles-grid">
+                    <article class="article-card article-ai">
+                        <h2 class="article-title">
+                            <a href="https://economictimes.indiatimes.com/tech/artificial-intelligence/meta-has-set-up-ai-superintelligence-team-with-hires-from-openai-google-anthropic-reports/articleshow/122175977.cms" target="_blank">Meta has set up AI superintelligence team with hires from OpenAI, Google, Anthropic: Reports</a>
+                        </h2>
+                        <div class="article-meta">
+                            <div>
+                                <span class="article-source">The Times of India</span>
+                                <span class="article-time"> • 1 day ago</span>
+                            </div>
+                            <div class="hot-score">🔥 382</div>
+                        </div>
+                        <p class="article-description">
+                            OpenAI CEO Sam Altman said in a recent podcast that Meta was recruiting AI researchers from his company, offering signing bonuses as high as $100 million. Separately, OpenAI’s chief research officer, Mark Chen, addressed Meta’s aggressive recruitment tactics …
+                        </p>
+                        <div class="keywords">
+                            <span class="keyword-tag">ai</span><span class="keyword-tag">openai</span><span class="keyword-tag">ai</span><span class="keyword-tag">openai</span><span class="keyword-tag">anthropic</span><span class="keyword-tag">google</span><span class="keyword-tag">meta</span><span class="keyword-tag">intel</span>
+                        </div>
+                    </article>
+                    <article class="article-card article-ai">
+                        <h2 class="article-title">
+                            <a href="https://economictimes.indiatimes.com/news/new-updates/ai-hallucinates-trusting-chatgpt-too-much-openai-ceo-sam-altman-has-a-warning-for-you/articleshow/122176157.cms" target="_blank">‘AI hallucinates’: Trusting ChatGPT too much? OpenAI CEO Sam Altman has a warning for you</a>
+                        </h2>
+                        <div class="article-meta">
+                            <div>
+                                <span class="article-source">The Times of India</span>
+                                <span class="article-time"> • 1 day ago</span>
+                            </div>
+                            <div class="hot-score">🔥 323</div>
+                        </div>
+                        <p class="article-description">
+                            Sam Altman, CEO of OpenAI, advises caution regarding ChatGPT. He highlights the AI&#39;s unreliability. Altman acknowledges its tendency to generate incorrect information. He also suggests current computers are not designed for AI. OpenAI faces legal challenges, …
+                        </p>
+                        <div class="keywords">
+                            <span class="keyword-tag">ai</span><span class="keyword-tag">chatgpt</span><span class="keyword-tag">openai</span><span class="keyword-tag">ai</span><span class="keyword-tag">chatgpt</span><span class="keyword-tag">openai</span>
+                        </div>
+                    </article>
+                    <article class="article-card article-ai">
+                        <h2 class="article-title">
+                            <a href="https://slashdot.org/firehose.pl?op=view&amp;amp;id=178241442" target="_blank">Apple’s AI Siri might be powered by OpenAI - The Verge</a>
+                        </h2>
+                        <div class="article-meta">
+                            <div>
+                                <span class="article-source">Slashdot.org</span>
+                                <span class="article-time"> • 1 day ago</span>
+                            </div>
+                            <div class="hot-score">🔥 284</div>
+                        </div>
+                        <p class="article-description">
+                            Apple’s AI Siri might be powered by OpenAIThe Verge Apple Weighs Using Anthropic or OpenAI to Power Siri in Major ReversalBloomberg.com Apple weighs using Anthropic or OpenAI to power Siri in major reversal, Bloomberg News reportsReuters Apple may power Siri …
+                        </p>
+                        <div class="keywords">
+                            <span class="keyword-tag">ai</span><span class="keyword-tag">openai</span><span class="keyword-tag">ai</span><span class="keyword-tag">openai</span><span class="keyword-tag">anthropic</span><span class="keyword-tag">apple</span>
+                        </div>
+                    </article>
+                    <article class="article-card article-ai">
+                        <h2 class="article-title">
+                            <a href="https://www.madshrimps.be/news/apple-is-looking-outside-its-walled-garden-for-ai-help/" target="_blank">Apple is looking outside its walled garden for AI help</a>
+                        </h2>
+                        <div class="article-meta">
+                            <div>
+                                <span class="article-source">Madshrimps.be</span>
+                                <span class="article-time"> • 1 day ago</span>
+                            </div>
+                            <div class="hot-score">🔥 284</div>
+                        </div>
+                        <p class="article-description">
+                            According to Bloomberg, Job’s Mob is considering using AI models from Anthropic or OpenAI in a desperate bid to make Siri look clever. While the company has been telling the world+plus dog that its own Apple Intelligence produces will be the best thing since …
+                        </p>
+                        <div class="keywords">
+                            <span class="keyword-tag">ai</span><span class="keyword-tag">openai</span><span class="keyword-tag">ai</span><span class="keyword-tag">openai</span><span class="keyword-tag">anthropic</span><span class="keyword-tag">apple</span><span class="keyword-tag">intel</span>
+                        </div>
+                    </article>
+                    <article class="article-card article-ai">
+                        <h2 class="article-title">
+                            <a href="https://www.saastr.com/salesforce-microsoft-google-and-atlassian-all-raise-prices-again-in-2025-hooray/" target="_blank">Salesforce, Microsoft, Google and Atlassian All Raise Prices Again in 2025. Hooray.</a>
+                        </h2>
+                        <div class="article-meta">
+                            <div>
+                                <span class="article-source">Saastr.com</span>
+                                <span class="article-time"> • 1 day ago</span>
+                            </div>
+                            <div class="hot-score">🔥 279</div>
+                        </div>
+                        <p class="article-description">
+                            The major SaaS providers have announced another round of significant price increases for 2025, continuing a trend that’s putting pressure on enterprise software budgets across the board. After years of relatively stable pricing, these companies are leveraging…
+                        </p>
+                        <div class="keywords">
+                            <span class="keyword-tag">ai</span><span class="keyword-tag">ai</span><span class="keyword-tag">agi</span><span class="keyword-tag">microsoft</span><span class="keyword-tag">google</span><span class="keyword-tag">software</span><span class="keyword-tag">saas</span>
+                        </div>
+                    </article>
+                    <article class="article-card article-ai">
+                        <h2 class="article-title">
+                            <a href="https://www.helpnetsecurity.com/2025/07/01/tracer-ai-combats-fraud-counterfeits-and-narrative-attacks-in-chatgpt/" target="_blank">Tracer AI combats fraud, counterfeits and narrative attacks in ChatGPT</a>
+                        </h2>
+                        <div class="article-meta">
+                            <div>
+                                <span class="article-source">Help Net Security</span>
+                                <span class="article-time"> • 1 day ago</span>
+                            </div>
+                            <div class="hot-score">🔥 278</div>
+                        </div>
+                        <p class="article-description">
+                            Tracer AI launched Tracer Protect for ChatGPT, a solution that protects brands from the reputational harm being propagated at machine scale via AI chatbots by bad actors. The rising popularity of generative AI (genAI) engines is driving the urgent and rapidly…
+                        </p>
+                        <div class="keywords">
+                            <span class="keyword-tag">ai</span><span class="keyword-tag">chatgpt</span><span class="keyword-tag">generative ai</span><span class="keyword-tag">ai</span><span class="keyword-tag">chatgpt</span><span class="keyword-tag">api</span><span class="keyword-tag">attack</span>
+                        </div>
+                    </article>
+                    <article class="article-card article-ai">
+                        <h2 class="article-title">
+                            <a href="https://www.microsoft.com/en-us/security/blog/2025/06/30/jasper-sleet-north-korean-remote-it-workers-evolving-tactics-to-infiltrate-organizations/" target="_blank">Jasper Sleet: North Korean remote IT workers’ evolving tactics to infiltrate organizations | Microsoft Security Blog</a>
+                        </h2>
+                        <div class="article-meta">
+                            <div>
+                                <span class="article-source">Microsoft.com</span>
+                                <span class="article-time"> • 1 day ago</span>
+                            </div>
+                            <div class="hot-score">🔥 273</div>
+                        </div>
+                        <p class="article-description">
+                            Since 2024, Microsoft Threat Intelligence has observed remote IT workers deployed by North Korea leveraging AI to improve the scale and sophistication of their operations, steal data, and generate revenue for the North Korean government.
+                        </p>
+                        <div class="keywords">
+                            <span class="keyword-tag">ai</span><span class="keyword-tag">ai</span><span class="keyword-tag">agi</span><span class="keyword-tag">threat intelligence</span><span class="keyword-tag">microsoft</span><span class="keyword-tag">intel</span><span class="keyword-tag">threat</span><span class="keyword-tag">security</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-logo">Advanced Tech News Collector</div>
+            <div class="footer-time">Report generated at 15:24:04 WIB</div>
+			<div class="footer-copyright">© 2025 Thunder (thd3r)</div>
+        </footer>
+    </div>
+
+    <script>
+        // Category accordion functionality
+        function toggleCategory(categoryId) {
+            const categorySection = document.getElementById('category-' + categoryId);
+            categorySection.classList.toggle('collapsed');
+        }
+
+        // Collapse all categories initially (optional)
+        function initCategories() {
+            // Uncomment the lines below if you want all categories collapsed by default
+            const categories = document.querySelectorAll('.category-section');
+            categories.forEach(category => category.classList.add('collapsed'));
+        }
+
+        // Theme toggle functionality
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.querySelector('.theme-icon');
+            const themeText = document.querySelector('.theme-text');
+            
+            if (body.getAttribute('data-theme') === 'light') {
+                body.removeAttribute('data-theme');
+                themeIcon.textContent = '🌙';
+                themeText.textContent = 'Dark';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeIcon.textContent = '☀️';
+                themeText.textContent = 'Light';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Initialize theme on page load
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const body = document.body;
+            const themeIcon = document.querySelector('.theme-icon');
+            const themeText = document.querySelector('.theme-text');
+            
+            if (savedTheme === 'light' || (!savedTheme && !prefersDark)) {
+                body.setAttribute('data-theme', 'light');
+                themeIcon.textContent = '☀️';
+                themeText.textContent = 'Light';
+            } else {
+                body.removeAttribute('data-theme');
+                themeIcon.textContent = '🌙';
+                themeText.textContent = 'Dark';
+            }
+        }
+
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                initTheme();
+            }
+        });
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            initTheme();
+            initCategories();
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Theme toggle: Ctrl/Cmd + Shift + T
+            if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'T') {
+                e.preventDefault();
+                toggleTheme();
+            }
+            
+            // Collapse all categories: Ctrl/Cmd + Shift + C
+            if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'C') {
+                e.preventDefault();
+                const categories = document.querySelectorAll('.category-section');
+                categories.forEach(category => category.classList.add('collapsed'));
+            }
+            
+            // Expand all categories: Ctrl/Cmd + Shift + E
+            if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'E') {
+                e.preventDefault();
+                const categories = document.querySelectorAll('.category-section');
+                categories.forEach(category => category.classList.remove('collapsed'));
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech News Report - July 1, 2025</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6; 
+            color: #333; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            display: block;
+        }
+        .category-section {
+            margin-bottom: 40px;
+        }
+        .category-header {
+            background: rgba(255,255,255,0.95);
+            padding: 20px;
+            border-radius: 15px 15px 0 0;
+            border-left: 5px solid;
+        }
+        .category-ai { border-left-color: #ff6b6b; }
+        .category-tech { border-left-color: #4ecdc4; }
+        .category-digital { border-left-color: #45b7d1; }
+        .category-hacking { border-left-color: #f9ca24; }
+        
+        .category-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+        }
+        .category-icon {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        .articles-grid {
+            display: grid;
+            gap: 20px;
+            background: rgba(255,255,255,0.95);
+            padding: 20px;
+            border-radius: 0 0 15px 15px;
+        }
+        .article-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-left: 4px solid;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .article-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+        .article-ai { border-left-color: #ff6b6b; }
+        .article-tech { border-left-color: #4ecdc4; }
+        .article-digital { border-left-color: #45b7d1; }
+        .article-hacking { border-left-color: #f9ca24; }
+        
+        .article-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        .article-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+        .article-title a:hover {
+            color: #3498db;
+        }
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+        .article-description {
+            color: #555;
+            margin-bottom: 10px;
+        }
+        .keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        .keyword-tag {
+            background: #ecf0f1;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            color: #555;
+        }
+        .hot-score {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a6f);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .footer {
+            text-align: center;
+            color: rgba(255,255,255,0.8);
+            margin-top: 40px;
+            padding: 20px;
+        }
+        @media (max-width: 768px) {
+            .container { padding: 10px; }
+            .header h1 { font-size: 2em; }
+            .articles-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Tech News Report</h1>
+            <p>Latest Technology News • Tuesday, July 1, 2025</p>
+        </div>
+        <div class="stats">
+            <div class="stat-card">
+                <span class="stat-number">20</span>
+                <div>Total Articles</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">4</span>
+                <div>Categories</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">133</span>
+                <div>Avg. Hot Score</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">40.6h</span>
+                <div>Latest News</div>
+            </div>
+        </div>
+        <div class="category-section">
+            <div class="category-header category-tech">
+                <div class="category-title">
+                    <span class="category-icon">💻</span>
+                    Technology (2 articles)
+                </div>
+            </div>
+            <div class="articles-grid">
+                <div class="article-card article-tech">
+                    <div class="article-title">
+                        <a href="https://it.slashdot.org/story/25/06/29/1956256/new-nsacisa-report-again-urges-the-use-of-memory-safe-programming-language" target="_blank">New NSA/CISA Report Again Urges the Use of Memory-Safe Programming Language</a>
+                    </div>
+                    <div class="article-meta">
+                        <span>Slashdot.org • 1 days ago</span>
+                        <span class="hot-score">🔥 113</span>
+                    </div>
+                    <div class="article-description">An anonymous reader shared this report from the tech news site The Register:
+
+The U.S. Cybersecurity and Infrastructure Security Agency (CISA) and the National Security Agency (NSA) this week published guidance urging software developers to adopt memory-safe …</div>
+                    <div class="keywords"><span class="keyword-tag">ai</span><span class="keyword-tag">cybersecurity</span><span class="keyword-tag">software</span></div>
+                </div>
+                <div class="article-card article-tech">
+                    <div class="article-title">
+                        <a href="https://proton.me/blog/apple-lawsuit" target="_blank">Proton joins suit against Apple for practices that harm developers and consumers</a>
+                    </div>
+                    <div class="article-meta">
+                        <span>Hacker News • 10 hours ago</span>
+                        <span class="hot-score">🔥 110</span>
+                    </div>
+                    <div class="article-description">HN Score: 200, Comments: 245</div>
+                    <div class="keywords"><span class="keyword-tag">ai</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="category-section">
+            <div class="category-header category-hacking">
+                <div class="category-title">
+                    <span class="category-icon">🔒</span>
+                    Cybersecurity (10 articles)
+                </div>
+            </div>
+            <div class="articles-grid">
+                <div class="article-card article-hacking">
+                    <div class="article-title">
+                        <a href="https://news.ycombinator.com/item?id=44412280" target="_blank">Show HN: Cipherhood – Cybersecurity and Recovery for Hacked Users</a>
+                    </div>
+                    <div class="article-meta">
+                        <span>Hacker News • 1 days ago</span>
+                        <span class="hot-score">🔥 183</span>
+                    </div>
+                    <div class="article-description">Hi HN,We created Cipherhood to help individuals and small businesses recover from serious digital incidents—compromised accounts, lost access to crypto wallets, spyware infections, and personal data leaks—using legal and ethical cybersecurity practices.The cy…</div>
+                    <div class="keywords"><span class="keyword-tag">cybersecurity</span></div>
+                </div>
+                <div class="article-card article-hacking">
+                    <div class="article-title">
+                        <a href="https://biztoc.com/x/0ae5d48ce04e6476" target="_blank">It's 2025 and almost half of you are still paying ransomware operators</a>
+                    </div>
+                    <div class="article-meta">
+                        <span>Biztoc.com • 1 days ago</span>
+                        <span class="hot-score">🔥 164</span>
+                    </div>
+                    <div class="article-description">PLUS: Crooks target hardware crypto wallets; Bad flaws in Brother printers; ,O365 allows takeover-free phishing; and more
+Infosec in Brief Despite warnings not to pay ransomware operators, almost half of those infected by the malware send cash to the crooks w…</div>
+                    <div class="keywords"><span class="keyword-tag">hardware</span></div>
+                </div>
+                <div class="article-card article-hacking">
+                    <div class="article-title">
+                        <a href="https://www.theregister.com/2025/06/30/information_security_in_brief/" target="_blank">It's 2025 and almost half of you are still paying ransomware operators</a>
+                    </div>
+                    <div class="article-meta">
+                        <span>Theregister.com • 1 days ago</span>
+                        <span class="hot-score">🔥 164</span>
+                    </div>
+                    <div class="article-description">PLUS: Crooks target hardware crypto wallets; Bad flaws in Brother printers; ,O365 allows takeover-free phishing; and more
+Infosec in Brief Despite warnings not to pay ransomware operators, almost half of those infected by the malware send cash to the crooks w…</div>
+                    <div class="keywords"><span class="keyword-tag">hardware</span></div>
+                </div>
+                <div class="article-card article-hacking">
+                    <div class="article-title">
+                        <a href="https://www.redhat.com/en/blog/comprehensive-benchmarking-granite-and-instructlab-models-cybersecurity" target="_blank">A comprehensive benchmarking of Granite and InstructLab models for cybersecurity</a>
+                    </div>
+                    <div class="article-meta">
+                        <span>Redhat.com • 1 days ago</span>
+                        <span class="hot-score">🔥 128</span>
+                    </div>
+                    <div class="article-description">With large language models (LLMs) quickly advancing and becoming more and more integrated into mission-critical enterprise workflows, their capability to accurately reason and respond to very domain-specific and highly specialized knowledge matters. This is e…</div>
+                    <div class="keywords"><span class="keyword-tag">ai</span><span class="keyword-tag">cybersecurity</span></div>
+                </div>
+                <div class="article-card article-hacking">
+                    <div class="article-title">
+                        <a href="https://www.etfdailynews.com/2025/06/29/perigon-wealth-management-llc-has-983000-stake-in-amplify-cybersecurity-etf-nysearcahack/" target="_blank">Perigon Wealth Management LLC Has $983,000 Stake in Amplify Cybersecurity ETF (NYSEARCA:HACK)</a>
+                    </div>
+                    <div class="article-meta">
+                        <span>ETF Daily News • 1 days ago</span>
+                        <span class="hot-score">🔥 122</span>
+                    </div>
+                    <div class="article-description">Perigon Wealth Management LLC trimmed its holdings in Amplify Cybersecurity ETF (NYSEARCA:HACK – Free Report) by 8.4% in the first quarter, according to the company in its most recent Form 13F filing with the Securities and Exchange Commission. The firm owned…</div>
+                    <div class="keywords"><span class="keyword-tag">cybersecurity</span></div>
+                </div>
+                <div class="article-card article-hacking">
+                    <div class="article-title">
+                        <a href="https://biztoc.com/x/197c54253fe87780" target="_blank">AT&T's $177 Million Settlement Will Pay Victims of Two Huge Data Breaches. Learn Who Qualifies</a>
+                    </div>
+                    <div class="article-meta">
+                        <span>Biztoc.com • 1 days ago</span>
+                        <span class="hot-score">🔥 120</span>
+                    </div>
+                    <div class="article-description">Of the 1,350,835,988 notices sent to subjects of data breaches in 2024, almost a tenth of those came from a hack of AT&T servers in April, according to to the Identity Theft Resource Center's 2024 Annual Data Breach Report. The telecom giant now plans to sett…</div>
+                    <div class="keywords"></div>
+                </div>
+                <div class="article-card article-hacking">
+                    <div class="article-title">
+                        <a href="https://www.schneier.com/blog/archives/2025/06/cyberattacks-shake-voters-trust-in-elections.html" target="_blank">How Cybersecurity Fears Affect Confidence in Voting Systems</a>
+                    </div>
+                    <div class="article-meta">
+                        <span>Schneier.com • 1 days ago</span>
+                        <span class="hot-score">🔥 114</span>
+                    </div>
+                    <div class="article-description">American democracy runs on trust, and that trust is cracking.
+Nearly half of Americans, both Democrats and Republicans, question whether elections are conducted fairly. Some voters accept election results only when their side wins. The problem isn’t just poli…</div>
+                    <div class="keywords"><span class="keyword-tag">ai</span><span class="keyword-tag">cybersecurity</span></div>
+                </div>
+                <div class="article-card article-hacking">
+                    <div class="article-title">
+                        <a href="https://www.notebookcheck.net/Bugs-Earbuds-from-JBL-Sony-and-others-found-to-have-bugs-that-can-turn-them-into-spy-devices.1047585.0.html" target="_blank">Bugs: Earbuds from JBL, Sony, and others found to have bugs that can turn them into spy devices</a>
+                    </div>
+                    <div class="article-meta">
+                        <span>Notebookcheck.net • 1 days ago</span>
+                        <span class="hot-score">🔥 114</span>
+                    </div>
+                    <div class="article-description">German cybersecurity firm Ernw has revealed that several Bluetooth headphones and earbuds using Airoha's chips are vulnerable to hacking. The vulnerabilities, listed as CVE-2025-20700, CVE-2025-20701, and CVE-2025-20702, allow attackers to take control of the…</div>
+                    <div class="keywords"><span class="keyword-tag">ai</span><span class="keyword-tag">cybersecurity</span></div>
+                </div>
+                <div class="article-card article-hacking">
+                    <div class="article-title">
+                        <a href="https://news.ycombinator.com/item?id=44412237" target="_blank">Show HN: Cipherhood – Recover Hacked Accounts with Ethical Hacking</a>
+                    </div>
+                    <div class="article-meta">
+                        <span>Hacker News • 1 days ago</span>
+                        <span class="hot-score">🔥 110</span>
+                    </div>
+                    <div class="article-description">Hey HN,We built Cipherhood to offer a legitimate, transparent alternative to the shady world of “hackers for hire” that prey on people in crisis after losing access to accounts or being compromised online.We focus on ethical hacking, account and crypto recove…</div>
+                    <div class="keywords"></div>
+                </div>
+                <div class="article-card article-hacking">
+                    <div class="article-title">
+                        <a href="https://www.forbes.com/sites/tonybradley/2025/06/29/potential-cyber-threat-emerges-as-moveit-scanning-accelerates/" target="_blank">Potential Cyber Threat Emerges As MOVEit Scanning Accelerates</a>
+                    </div>
+                    <div class="article-meta">
+                        <span>Forbes • 1 days ago</span>
+                        <span class="hot-score">🔥 103</span>
+                    </div>
+                    <div class="article-description">GreyNoise reports a surge in MOVEit Transfer scanning activity, with hundreds of cloud-based IPs probing systems—suggesting attackers may be preparing for new exploits.</div>
+                    <div class="keywords"><span class="keyword-tag">cloud</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="category-section">
+            <div class="category-header category-digital">
+                <div class="category-title">
+                    <span class="category-icon">💰</span>
+                    Digital & Fintech (5 articles)
+                </div>
+            </div>
+            <div class="articles-grid">
+                <div class="article-card article-digital">
+                    <div class="article-title">
+                        <a href="https://bitcoinist.com/ethereum-builds-strength-against-bitcoin-breakout-prediction-above-0-02-btc/" target="_blank">Ethereum Builds Strength Against Bitcoin: Breakout Prediction Above 0.02 BTC</a>
+                    </div>
+                    <div class="article-meta">
+                        <span>Bitcoinist • 1 days ago</span>
+                        <span class="hot-score">🔥 181</span>
+                    </div>
+                    <div class="article-description">Ethereum has taken a backseat to Bitcoin’s dominance for most of the past year by trailing in performance and growth of market dominance. But since the start of April, the second-largest cryptocurrency by market cap has gained traction, showing early signs of…</div>
+                    <div class="keywords"><span class="keyword-tag">ai</span><span class="keyword-tag">cryptocurrency</span></div>
+                </div>
+                <div class="article-card article-digital">
+                    <div class="article-title">
+                        <a href="https://biztoc.com/x/0e625324176603d2" target="_blank">Bitcoin, Ethereum, Dogecoin Climb As Trump Labels Growing BTC Adoption As 'Great Thing': Sell Pressure On Largest Crypto May Be Fading Away, Says Analyst</a>
+                    </div>
+                    <div class="article-meta">
+                        <span>Biztoc.com • 1 days ago</span>
+                        <span class="hot-score">🔥 171</span>
+                    </div>
+                    <div class="article-description">Leading cryptocurrencies rose Sunday as President Donald Trump called Bitcoin’s growing adoption a “great thing” for the United States.
+Cryptocurrency
+Gains +/-
+Price (Recorded at 9:30 p.m. ET)
+Bitcoin (CRYPTO: BTC)
++1.18%
+$108,713.46
+Ethereum (CRYPTO: ETH) 
+…</div>
+                    <div class="keywords"><span class="keyword-tag">ai</span><span class="keyword-tag">cryptocurrency</span></div>
+                </div>
+                <div class="article-card article-digital">
+                    <div class="article-title">
+                        <a href="https://biztoc.com/x/5ba94c266368d0a6" target="_blank">Bitcoin Investors Faced Mortgage Hurdles Due to Crypto-Tied Assets, Says Cathie Wood: 'Won't Be Surprised' If They Were To Shift Some Of Their BTC To Coinbase</a>
+                    </div>
+                    <div class="article-meta">
+                        <span>Biztoc.com • 1 days ago</span>
+                        <span class="hot-score">🔥 136</span>
+                    </div>
+                    <div class="article-description">Seasoned investor Cathie Wood said Saturday that Bitcoin (CRYPTO: BTC) holders may not hesitate to shift their holdings to a centralized cryptocurrency exchange to avail home loans.
+What Happened: Wood, the CEO of ARK Invest, was responding to an X user who s…</div>
+                    <div class="keywords"><span class="keyword-tag">ai</span><span class="keyword-tag">cryptocurrency</span></div>
+                </div>
+                <div class="article-card article-digital">
+                    <div class="article-title">
+                        <a href="http://www.newsbtc.com/bitcoin-news/bitcoin-price-surges-above-108000-analyst-predicts-potential-breakout-to-150000/" target="_blank">Bitcoin Price Surges Above $108,000: Analyst Predicts Potential Breakout To $150,000</a>
+                    </div>
+                    <div class="article-meta">
+                        <span>newsBTC • 1 days ago</span>
+                        <span class="hot-score">🔥 134</span>
+                    </div>
+                    <div class="article-description">The Bitcoin price has recently climbed back above the $108,000 mark, yet it struggles to surpass its current record of $111,800, creating a sense of uncertainty in the market.  This persistent inability to break through has characterized the cryptocurrency’s …</div>
+                    <div class="keywords"><span class="keyword-tag">ai</span><span class="keyword-tag">cryptocurrency</span></div>
+                </div>
+                <div class="article-card article-digital">
+                    <div class="article-title">
+                        <a href="https://bitcoinist.com/nft-theft-fake-insiders-posing-as-it-experts-rack-up-1-million-zackxbt/" target="_blank">NFT Theft: Fake Insiders Posing As IT ‘Experts’ Rack Up $1 Million–ZackXBT</a>
+                    </div>
+                    <div class="article-meta">
+                        <span>Bitcoinist • 1 days ago</span>
+                        <span class="hot-score">🔥 103</span>
+                    </div>
+                    <div class="article-description">NFT projects lost roughly $1 million in crypto over the past week when hackers posed as IT staff and struck at the heart of minting systems. The breach hit fan-token marketplace Favrr and Web3 initiatives Replicandy and ChainSaw, among others. Related Reading…</div>
+                    <div class="keywords"><span class="keyword-tag">ai</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="category-section">
+            <div class="category-header category-ai">
+                <div class="category-title">
+                    <span class="category-icon">🤖</span>
+                    Artificial Intelligence (3 articles)
+                </div>
+            </div>
+            <div class="articles-grid">
+                <div class="article-card article-ai">
+                    <div class="article-title">
+                        <a href="https://github.com/M4THYOU/TokenDagger" target="_blank">Show HN: TokenDagger – A tokenizer faster than OpenAI's Tiktoken</a>
+                    </div>
+                    <div class="article-meta">
+                        <span>Hacker News • 15 hours ago</span>
+                        <span class="hot-score">🔥 137</span>
+                    </div>
+                    <div class="article-description">HN Score: 253, Comments: 70</div>
+                    <div class="keywords"><span class="keyword-tag">ai</span></div>
+                </div>
+                <div class="article-card article-ai">
+                    <div class="article-title">
+                        <a href="https://siliconangle.com/2025/06/29/chinas-baidu-declares-war-openai-others-open-sourcing-ernie-chatbot/" target="_blank">China’s Baidu declares war on OpenAI and others by open-sourcing Ernie chatbot</a>
+                    </div>
+                    <div class="article-meta">
+                        <span>SiliconANGLE News • 1 days ago</span>
+                        <span class="hot-score">🔥 135</span>
+                    </div>
+                    <div class="article-description">Chinese search engine giant Baidu Inc. today announced that it’s open-sourcing its powerful generative artificial intelligence chatbot Ernie, in a move that experts say will nudge the industry away from a battle over performance and into a price war. The comp…</div>
+                    <div class="keywords"><span class="keyword-tag">ai</span><span class="keyword-tag">artificial intelligence</span></div>
+                </div>
+                <div class="article-card article-ai">
+                    <div class="article-title">
+                        <a href="https://pypi.org/project/pygpt-net/2.5.23/" target="_blank">pygpt-net 2.5.23</a>
+                    </div>
+                    <div class="article-meta">
+                        <span>Pypi.org • 1 days ago</span>
+                        <span class="hot-score">🔥 125</span>
+                    </div>
+                    <div class="article-description">Desktop AI Assistant powered by models: OpenAI o1, o3, GPT-4o, GPT-4 Vision, DALL-E 3, Llama 3, Mistral, Gemini, Claude, Grok, DeepSeek, Bielik, and other models supported by Llama Index, and Ollama. Features include chatbot, text completion, image generation…</div>
+                    <div class="keywords"><span class="keyword-tag">ai</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <p>📊 Generated by Advanced Tech News Collector</p>
+            <p>🕒 Report generated at 11:17:18 WIB</p>
+        </div>
+    </div>
+</body>
+</html>

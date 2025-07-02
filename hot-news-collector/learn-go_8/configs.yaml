@@ -1,0 +1,365 @@
+# News Collector Configuration
+app:
+  name: "Hot News Collector"
+  version: "0.0.1"
+
+# API Configuration
+sources:
+  newsapi:
+    base_url: "https://newsapi.org/v2/everything"
+    timeout: 30s
+    page_size: 50
+    days_back: 2
+    language: "en"
+    sort_by: "publishedAt"
+  
+  hackernews:
+    base_url: "https://hacker-news.firebaseio.com/v0"
+    top_stories_limit: 30
+    timeout: 30s
+  
+  reddit:
+    base_url: "https://www.reddit.com/r"
+    subreddits:
+      - "technology"
+      - "artificial"
+      - "cybersecurity"
+      - "programming"
+      - "startups"
+      - "MachineLearning"
+    limit_per_subreddit: 15
+    min_score: 50
+    timeout: 30s
+    delay_between_requests: 200ms
+
+# Rate Limiting
+rate_limiting:
+  max_concurrent_requests: 5
+  request_delay: 100ms
+
+# Category Filters Configuration
+categories:
+  ai:
+    primary_keywords:
+      - "artificial intelligence"
+      - "machine learning"
+      - "deep learning"
+      - "neural network"
+      - "GPT"
+      - "ChatGPT"
+      - "OpenAI"
+      - "AI model"
+      - "generative AI"
+      - "LLM"
+      - "transformer"
+      - "computer vision"
+      - "natural language processing"
+      - "NLP"
+      - "reinforcement learning"
+    secondary_keywords:
+      - "algorithm"
+      - "automation"
+      - "robot"
+      - "cognitive"
+      - "intelligent"
+      - "smart system"
+      - "predictive"
+      - "recommendation"
+      - "pattern recognition"
+      - "data mining"
+    exclude_keywords:
+      - "game"
+      - "movie"
+      - "entertainment"
+      - "sport"
+      - "weather"
+      - "fashion"
+    min_score: 25
+    weight_multiplier: 1.5
+
+  tech:
+    primary_keywords:
+      - "startup"
+      - "technology"
+      - "software"
+      - "hardware"
+      - "programming"
+      - "developer"
+      - "innovation"
+      - "digital transformation"
+      - "cloud computing"
+      - "SaaS"
+      - "API"
+      - "mobile app"
+      - "web development"
+      - "IoT"
+      - "5G"
+      - "quantum computing"
+    secondary_keywords:
+      - "tech company"
+      - "silicon valley"
+      - "venture capital"
+      - "funding"
+      - "IPO"
+      - "platform"
+      - "framework"
+      - "open source"
+      - "github"
+      - "coding"
+    exclude_keywords:
+      - "celebrity"
+      - "politics"
+      - "entertainment"
+      - "sport"
+      - "weather"
+    min_score: 20
+    weight_multiplier: 1.2
+
+  digital:
+    primary_keywords:
+      - "cryptocurrency"
+      - "blockchain"
+      - "bitcoin"
+      - "ethereum"
+      - "fintech"
+      - "digital payment"
+      - "NFT"
+      - "DeFi"
+      - "digital currency"
+      - "crypto"
+      - "digital wallet"
+      - "trading"
+      - "financial technology"
+      - "digital banking"
+      - "e-commerce"
+      - "digital economy"
+    secondary_keywords:
+      - "investment"
+      - "market"
+      - "finance"
+      - "trading platform"
+      - "exchange"
+      - "digital transformation"
+      - "online payment"
+      - "mobile payment"
+    exclude_keywords:
+      - "celebrity"
+      - "entertainment"
+      - "sport"
+      - "weather"
+      - "politics unrelated"
+    min_score: 22
+    weight_multiplier: 1.3
+
+  hacking:
+    primary_keywords:
+      - "cybersecurity"
+      - "data breach"
+      - "hacking"
+      - "cyber attack"
+      - "malware"
+      - "ransomware"
+      - "phishing"
+      - "vulnerability"
+      - "security breach"
+      - "cyber threat"
+      - "information security"
+      - "network security"
+      - "data leak"
+      - "exploit"
+    secondary_keywords:
+      - "security"
+      - "privacy"
+      - "encryption"
+      - "firewall"
+      - "antivirus"
+      - "penetration testing"
+      - "ethical hacking"
+      - "cyber defense"
+    exclude_keywords:
+      - "movie"
+      - "game"
+      - "entertainment"
+      - "sport"
+      - "weather"
+    min_score: 30
+    weight_multiplier: 1.4
+
+# NewsAPI Query Templates
+newsapi_queries:
+  ai: "\"artificial intelligence\" OR \"machine learning\" OR \"deep learning\" OR ChatGPT OR OpenAI OR \"AI model\""
+  tech: "\"startup funding\" OR \"tech company\" OR \"software development\" OR \"cloud computing\" OR \"digital transformation\""
+  digital: "cryptocurrency OR blockchain OR bitcoin OR fintech OR \"digital payment\" OR NFT OR DeFi"
+  hacking: "\"cyber attack\" OR \"data breach\" OR ransomware OR \"cybersecurity\" OR \"security vulnerability\""
+
+# Hot News Detection Configuration
+detector:
+  viral_keywords:
+    - "breaking"
+    - "urgent"
+    - "exclusive"
+    - "leaked"
+    - "exposed"
+    - "massive"
+    - "billion"
+    - "breakthrough"
+    - "revolutionary"
+    - "first-ever"
+    - "record-breaking"
+    - "unprecedented"
+    - "crisis"
+    - "emergency"
+    - "alert"
+    - "warning"
+    - "critical"
+    - "major"
+    - "huge"
+    - "shocking"
+    - "stunning"
+    - "dramatic"
+    - "historic"
+    - "landmark"
+
+  trending_topics:
+    - "ChatGPT"
+    - "OpenAI"
+    - "Google Bard"
+    - "Microsoft"
+    - "Apple"
+    - "Tesla"
+    - "Meta"
+    - "cybersecurity"
+    - "data breach"
+    - "AI regulation"
+    - "cryptocurrency crash"
+    - "startup funding"
+    - "IPO"
+    - "acquisition"
+    - "layoffs"
+    - "hiring freeze"
+
+  source_weights:
+    "TechCrunch": 1.5
+    "Wired": 1.4
+    "Ars Technica": 1.4
+    "The Verge": 1.3
+    "Reuters": 1.3
+    "Hacker News": 1.2
+    "Reddit": 1.0
+
+  category_weights:
+    "hacking": 1.4
+    "ai": 1.3
+    "digital": 1.2
+    "tech": 1.1
+
+  min_hot_score: 35
+  quality_threshold: 15 # For Hacker News
+
+# Keyword Extraction
+tech_keywords:
+  - "ai"
+  - "artificial intelligence"
+  - "machine learning"
+  - "blockchain"
+  - "cryptocurrency"
+  - "cybersecurity"
+  - "startup"
+  - "funding"
+  - "ipo"
+  - "acquisition"
+  - "breakthrough"
+  - "innovation"
+  - "technology"
+  - "software"
+  - "hardware"
+  - "cloud"
+  - "saas"
+  - "api"
+
+# Social Media Configuration
+social:
+  twitter:
+    max_posts: 10
+    character_limit: 280
+    max_hashtags: 5
+    
+    templates:
+      ai:
+        - "🤖 AI BREAKING: %s\n\nThe future is NOW! This changes everything in tech.\n\n🔗 %s\n\n%s"
+        - "⚡ MASSIVE AI NEWS: %s\n\nMind = BLOWN 🤯 The AI revolution accelerates!\n\n📖 %s\n\n%s"
+        - "🚨 AI ALERT: %s\n\nThis is HUGE for artificial intelligence! 🧠⚡\n\n🔗 %s\n\n%s"
+      
+      tech:
+        - "🔥 TECH BOMB: %s\n\nSilicon Valley is BUZZING! This is massive! 💥\n\n📖 %s\n\n%s"
+        - "🚀 STARTUP ALERT: %s\n\nThe tech world just shifted! Game changer! 🎯\n\n🔗 %s\n\n%s"
+        - "💡 INNOVATION BLAST: %s\n\nTech disruption in real-time! Don't miss this! ⚡\n\n📖 %s\n\n%s"
+      
+      hacking:
+        - "🚨 CYBER CRISIS: %s\n\nMajor security alert! Check your systems NOW! 🔒\n\n🔗 %s\n\n%s"
+        - "⚠️ BREACH ALERT: %s\n\nCybersecurity nightmare unfolding! Stay protected! 🛡️\n\n📖 %s\n\n%s"
+        - "🔴 SECURITY EMERGENCY: %s\n\nHackers are evolving! Critical update needed! 🚨\n\n🔗 %s\n\n%s"
+      
+      digital:
+        - "💰 CRYPTO EXPLOSION: %s\n\nThe digital economy is on fire! 🔥💎\n\n📖 %s\n\n%s"
+        - "🚀 BLOCKCHAIN BOOM: %s\n\nFintech revolution happening NOW! Don't miss out! 💸\n\n🔗 %s\n\n%s"
+        - "💎 DIGITAL GOLD RUSH: %s\n\nThe future of money is here! Game changer! ⚡\n\n📖 %s\n\n%s"
+
+    hashtags:
+      ai: ["#AI", "#MachineLearning", "#TechNews", "#Innovation", "#FutureOfWork"]
+      tech: ["#TechNews", "#Startup", "#Innovation", "#SiliconValley", "#Technology"]
+      hacking: ["#Cybersecurity", "#InfoSec", "#DataBreach", "#CyberAttack", "#Security"]
+      digital: ["#Crypto", "#Blockchain", "#Fintech", "#DigitalCurrency", "#Web3"]
+
+    keyword_hashtags:
+      "openai": "#OpenAI"
+      "chatgpt": "#ChatGPT"
+      "bitcoin": "#Bitcoin"
+      "ethereum": "#Ethereum"
+      "startup": "#Startup"
+      "funding": "#Funding"
+
+# Report Configuration
+reports:
+  title_max_length: 80
+  formats:
+    - "html"
+    - "markdown" 
+    - "json"
+  
+  html:
+    theme:
+      primary_gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+      category_colors:
+        ai: "#ff6b6b"
+        tech: "#4ecdc4"
+        digital: "#45b7d1"
+        hacking: "#f9ca24"
+  
+  category_info:
+    ai:
+      icon: "🤖"
+      name: "Artificial Intelligence"
+    tech:
+      icon: "💻"
+      name: "Technology"
+    digital:
+      icon: "💰"
+      name: "Digital & Fintech"
+    hacking:
+      icon: "🔒"
+      name: "Cybersecurity"
+
+# File Output Configuration
+output:
+  timestamp_format: "2006-01-02_15-04-05"
+  file_permissions: 0644
+  reports_dir: "reports"
+  posts_dir: "posts"
+  data_dir: "data"
+
+# Logging Configuration
+logging:
+  level: "info"
+  format: "json"
+  output: "stdout"
